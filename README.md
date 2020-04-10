@@ -20,7 +20,7 @@ A simple converter for RGB code transfer to Hex code
 
 - MVC structure 
 - Fisher-Yates Shuffle 洗牌演算法
-
+``` js
 getRandomNumberArray (count) {
     const number = Array.from(Array(count).keys())
     for (let index = number.length - 1; index > 0; index--) {
@@ -29,23 +29,26 @@ getRandomNumberArray (count) {
     }
     return number
   }
-
+```
 - 迭代器（Iterator）搭配 map 用法
+``` js
 Array.from(Array(52).keys()).map(index => this.getCardElement(index)).join("");
-
+```
 用 map 迭代陣列，並依序將數字丟進 view.getCardElement()，會變成有 52 張卡片的陣列；
 接著要用 join("") 把陣列合併成一個大字串，才能當成 HTML template 來使用；
 
--setTimeour
+- setTimeour
+``` js
 setTimeout(() => {
             view.flipCard(model.revealedCards[0])
             view.flipCard(model.revealedCards[1])
             model.revealedCards = []
             this.currentState = GAME_STATE.FirstCardAwaits
           }, 1000)
-
+```
 - [...]
 把參數轉變成一個陣列來迭代
+``` js
 flipCards (...cards) {
     cards.map(card => {
       if (card.classList.contains('back')) {
@@ -57,8 +60,9 @@ flipCards (...cards) {
       card.innerHTML = null
     })
   },
-
-  - CSS animations : @keyframes
+```
+- CSS animations : @keyframes
+```
 .wrong {
   animation-name: wrongAnimation;
   animation-duration: 0.2s;
@@ -69,10 +73,11 @@ flipCards (...cards) {
     border: 2px solid #ffd54f;
   }
 }
-
+```
 
 - {once: true} 
+```
 card.addEventListener('animationend', event =>   event.target.classList.remove('wrong'), { once: true })
     })
-
+```
 要求在事件執行一次之後，就要卸載這個監聽器。
